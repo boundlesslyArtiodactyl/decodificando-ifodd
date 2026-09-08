@@ -5,11 +5,14 @@ def decodificar_texto(texto):
     resultados = []
     
     for linha in linhas:
-        if not linha.strip():
+        linha_limpa = linha.strip()
+        if not linha_limpa:
             continue
             
-        tem_virgula_no_final = linha.rstrip().endswith(',')
-        palavras = linha.split()
+        ultimo_caractere = linha_limpa[-1] if linha_limpa else ""
+        tem_pontuacao_no_final = ultimo_caractere in string.punctuation
+        
+        palavras = linha_limpa.split()
         letras_escondidas = []
         
         for palavra in palavras:
@@ -25,8 +28,8 @@ def decodificar_texto(texto):
             
         palavra_final = "".join(letras_escondidas)
         
-        if tem_virgula_no_final:
-            palavra_final += ","
+        if tem_pontuacao_no_final:
+            palavra_final += ultimo_caractere
             
         resultados.append(palavra_final)
         
@@ -36,5 +39,7 @@ if __name__ == "__main__":
     texto_teste = """"""
     
     resultado = decodificar_texto(texto_teste)
+    print(resultado)
+
     print(resultado)
 
