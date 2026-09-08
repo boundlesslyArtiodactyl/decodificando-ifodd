@@ -40,6 +40,3 @@ if __name__ == "__main__":
     
     resultado = decodificar_texto(texto_teste)
     print(resultado)
-
-    print(resultado)
-
